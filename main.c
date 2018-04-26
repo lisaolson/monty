@@ -19,8 +19,7 @@ int main(int argc, char *argv[])
 		printf("Error: Can't open file <file>\n");
 		exit(EXIT_FAILURE);
 	}
-/*	while(fgetc(fd) != EOF)
-		chars++; */
+
 	buffer = malloc(sizeof(char) * 1024);
 	if (buffer == NULL)
 	{
@@ -33,7 +32,6 @@ int main(int argc, char *argv[])
 		printf("Error: Can't read file <file>\n");
 		exit(EXIT_FAILURE);
 	}
-	/*buffer[chars_read] = '\0';*/
 	oc = malloc(sizeof(char) * 10);
 	val = malloc(sizeof(char) * 10);
 	while (buffer[i] != '\0')
@@ -56,9 +54,9 @@ int main(int argc, char *argv[])
 				i++;
 				k++;
 			}
+			val[k + 1] = '\0';
 			line_number++;
 			opcode(oc, line_number);
-			val[k + 1] = '\0';
 			j = 0;
 			k = 0;
 		}
