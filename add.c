@@ -26,7 +26,6 @@ void add(stack_t **stack, unsigned int line_number)
 		exit(EXIT_FAILURE);
 	}
 
-	(void)line_number;
 	total = (*stack)->n + ((*stack)->next)->n;
 	((*stack)->next)->n = total;
 	temp = *stack;
