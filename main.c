@@ -68,10 +68,12 @@ int main(int argc, char *argv[])
 		if (oc[0] == '\0')
 			break;
 		opcode(&stack, oc, line_number);
+		free(buffer);
 	}
 	fclose(fd);
 	free(buffer);
 	free(oc);
 	free(val);
+	free_stack(stack);
 	return (0);
 }
