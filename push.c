@@ -19,18 +19,20 @@ void push(stack_t **stack, unsigned int line_number)
 	{
 		i++;
 	}
-	a = malloc(sizeof(char) * 10);
+	a = malloc(sizeof(char) * 12);
 	if (a == NULL)
 	{
 		printf("Error: malloc failed\n");
 		exit(EXIT_FAILURE);
 	}
+	i++;
 	while (buffer[i] != '\0')
 	{
 		a[j] = buffer[i];
 		i++;
 		j++;
 	}
+	a[j] = '\0';
 	value = atoi(a);
 
 	new = malloc(sizeof(stack_t));
@@ -42,12 +44,16 @@ void push(stack_t **stack, unsigned int line_number)
 	new->n = value;
 	if (*stack == NULL)
 	{
-		new->next = *stack;
+		new->next = NULL;
 		new->prev = NULL;
 		*stack = new;
 	}
-	new->next = *stack;
-	(*stack)->prev = NULL;
-	*stack = new;
+	else
+	{
+		new->next = *stack;
+		(*stack)->prev = new;
+		new->prev = NULL;
+		*stack = new;
+	}
 	free(a);
 }
