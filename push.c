@@ -27,7 +27,13 @@ void push(stack_t **stack, unsigned int line_number)
 	i++;
 	while (buffer[i] != '\0')
 	{
-		a[j] = buffer[i];
+		if (isalpha(buffer[i]) != 0)
+			a[j] = buffer[i];
+		else
+		{
+			printf("L%u: usage: push integer\n", line_number);
+			exit(EXIT_FAILURE);
+		}
 		i++;
 		j++;
 	}
