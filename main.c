@@ -51,6 +51,9 @@ int main(int argc, char *argv[])
 		i = 0;
 		j = 0;
 		chars_read = getline(&buffer, &bufsize, fd);
+		line_number++;
+		if (buffer[0] == '\n')
+			continue;
 		while(buffer[i] != '\n' && buffer[i] != '\0')
 		{
 			oc[j] = buffer[i];
@@ -64,7 +67,6 @@ int main(int argc, char *argv[])
 		oc[j] = '\0';
 		if (oc[0] == '\0')
 			break;
-		line_number++;
 		opcode(&stack, oc, line_number);
 	}
 	fclose(fd);
