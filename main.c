@@ -43,6 +43,10 @@ int main(int argc, char *argv[])
 		line_number++;
 		if (buffer[0] == '\n')
 			continue;
+		while (buffer[i] == ' ')
+		{
+			i++;
+		}
 		while (buffer[i] != '\n' && buffer[i] != '\0')
 		{
 			oc[j] = buffer[i];

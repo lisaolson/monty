@@ -14,6 +14,10 @@ void push(stack_t **stack, unsigned int line_number)
 	char *a;
 	stack_t *new;
 
+	while (buffer[i] == ' ')
+	{
+		i++;
+	}
 	while (buffer[i] != '\0' && buffer[i] != ' ')
 	{
 		i++;
@@ -27,6 +31,10 @@ void push(stack_t **stack, unsigned int line_number)
 	i++;
 	while (buffer[i] != '\0')
 	{
+		while (buffer[i] == ' ')
+		{
+			i++;
+		}
 		if (isalpha(buffer[i]) == 0)
 		{
 			a[j] = buffer[i];
