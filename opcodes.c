@@ -19,6 +19,8 @@ void opcode(stack_t **stack, char *oc, unsigned int line_number)
 		{"nop", nop},
 		{"sub", sub},
 		{"mul", mul},
+		{"mod", mod},
+		{"div", div},
 		{NULL, NULL}
 	};
 
