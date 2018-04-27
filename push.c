@@ -27,8 +27,10 @@ void push(stack_t **stack, unsigned int line_number)
 	i++;
 	while (buffer[i] != '\0')
 	{
-		if (isalpha(buffer[i]) != 0)
+		if (isalpha(buffer[i]) == 0)
+		{
 			a[j] = buffer[i];
+		}
 		else
 		{
 			printf("L%u: usage: push integer\n", line_number);
@@ -44,7 +46,6 @@ void push(stack_t **stack, unsigned int line_number)
 		exit(EXIT_FAILURE);
 	}
 	value = atoi(a);
-
 
 	new = malloc(sizeof(stack_t));
 	if (new == NULL)
