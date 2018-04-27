@@ -25,7 +25,7 @@ void sub(stack_t **stack, unsigned int line_number)
 		exit(EXIT_FAILURE);
 	}
 
-	total = (*stack)->n - ((*stack)->next)->n;
+	total = ((*stack)->next)->n - (*stack)->n;
 	((*stack)->next)->n = total;
 	temp = *stack;
 	*stack = (*stack)->next;
