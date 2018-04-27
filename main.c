@@ -28,7 +28,7 @@ int main(int argc, char *argv[])
 	fd = fopen(argv[1], "r");
 	if (fd == NULL)
 	{
-		printf("Error: Can't open file <file>\n");
+		printf("Error: Can't open file %s\n", argv[1]);
 		exit(EXIT_FAILURE);
 	}
 	oc = malloc(sizeof(char) * 10);
