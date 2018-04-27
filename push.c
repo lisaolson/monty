@@ -3,7 +3,7 @@
 /**
  * push - pushes an element to the stack
  * @stack: doubly linked list stack
- * line_number: counts number of lines
+ * @line_number: counts number of lines
  * Return: void
 */
 
