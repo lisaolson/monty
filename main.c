@@ -12,25 +12,7 @@ int main(int argc, char *argv[])
 	int chars_read = 0, i = 0, j = 0;
 	unsigned int line_number = 0;
 	stack_t *stack = NULL;
-/*        stack_t *new;
-        stack_t *new2;
-        stack_t *new3;
 
-	new = malloc(sizeof(stack_t));
-        new2 = malloc(sizeof(stack_t));
-        new3 = malloc(sizeof(stack_t));
-        new->n = 1;
-        new2->n = 2;
-        new3->n = 3;
-
-        stack = new;
-        new->next = new2;
-        new2->next = new3;
-        new3->next = NULL;
-        new3->prev = new2;
-        new2->prev = new;
-        new->prev = NULL;
-*/
 	if (argc != 2)
 	{
 		printf("USAGE: monty file\n");
@@ -54,7 +36,7 @@ int main(int argc, char *argv[])
 		line_number++;
 		if (buffer[0] == '\n')
 			continue;
-		while(buffer[i] != '\n' && buffer[i] != '\0')
+		while (buffer[i] != '\n' && buffer[i] != '\0')
 		{
 			oc[j] = buffer[i];
 			if (buffer[i] == ' ')
