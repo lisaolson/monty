@@ -9,10 +9,16 @@
 void swap(stack_t **stack, unsigned int line_number)
 {
 	int a;
-	int stack_count = 0;
+	int stack_count;
+	stack_t *temp;
 
-	while (*stack != NULL)
+	stack_count = 0;
+	temp = *stack;
+	while (temp != NULL)
+	{
+		temp = temp->next;
 		stack_count++;
+	}
 
 	if (stack_count < 2)
 	{

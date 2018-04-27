@@ -3,7 +3,7 @@
 /**
  * add - adds two elements of the stack
  * @stack: doubly linked list stack
- * line_number: counts number of lines
+ * @line_number: counts number of lines
  * Return: void
 */
 
@@ -13,8 +13,11 @@ void add(stack_t **stack, unsigned int line_number)
 	int stack_count;
 	stack_t *temp;
 
-	while (*stack != NULL)
+	stack_count = 0;
+	temp = *stack;
+	while (temp != NULL)
 	{
+		temp = temp->next;
 		stack_count++;
 	}
 	if (stack_count < 2)
