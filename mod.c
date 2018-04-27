@@ -21,7 +21,7 @@ void mod(stack_t **stack, unsigned int line_number)
 	}
 	if (stack_count < 2)
 	{
-		printf("L%u: can't sub, stack too short\n", line_number);
+		printf("L%u: can't mod, stack too short\n", line_number);
 		exit(EXIT_FAILURE);
 	}
 	if ((*stack)->n == 0)
