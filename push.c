@@ -38,7 +38,7 @@ void push(stack_t **stack, unsigned int line_number)
 		exit(EXIT_FAILURE);
 	}
 	value = atoi(a);
-	
+
 
 	new = malloc(sizeof(stack_t));
 	if (new == NULL)
