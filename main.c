@@ -1,69 +1,75 @@
+#define _GNU_SOURCE
 #include "monty.h"
+
+char *buffer;
 
 int main(int argc, char *argv[])
 {
-	char *buffer;
 	char *val;
 	char *oc;
-	int chars_read = 0, i = 0, j = 0, k = 0, fd = 0;
+	FILE *fd;
+	size_t bufsize;
+	int chars_read = 0, i = 0, j = 0;
 	unsigned int line_number = 0;
+	stack_t *stack = NULL;
+/*        stack_t *new;
+        stack_t *new2;
+        stack_t *new3;
 
+	new = malloc(sizeof(stack_t));
+        new2 = malloc(sizeof(stack_t));
+        new3 = malloc(sizeof(stack_t));
+        new->n = 1;
+        new2->n = 2;
+        new3->n = 3;
+
+        stack = new;
+        new->next = new2;
+        new2->next = new3;
+        new3->next = NULL;
+        new3->prev = new2;
+        new2->prev = new;
+        new->prev = NULL;
+*/
 	if (argc != 2)
 	{
 		printf("USAGE: monty file\n");
 		exit(EXIT_FAILURE);
 	}
-	fd = open(argv[1], O_RDONLY);
-	if (fd < 0)
+	fd = fopen(argv[1], "r");
+	if (fd == NULL)
 	{
 		printf("Error: Can't open file <file>\n");
 		exit(EXIT_FAILURE);
 	}
-
-	buffer = malloc(sizeof(char) * 1024);
-	if (buffer == NULL)
-	{
-		printf("Error: malloc failed\n");
-		exit(EXIT_FAILURE);
-	}
-	chars_read = read(fd, buffer, 1024);
-	if (chars_read < 0)
-	{
-		printf("Error: Can't read file <file>\n");
-		exit(EXIT_FAILURE);
-	}
 	oc = malloc(sizeof(char) * 10);
 	val = malloc(sizeof(char) * 10);
-	while (buffer[i] != '\0')
+	while (chars_read != -1)
 	{
-		if (buffer[i] != ' ' && buffer[i] != '\n')
+		buffer = NULL;
+		bufsize = 0;
+		i = 0;
+		j = 0;
+		chars_read = getline(&buffer, &bufsize, fd);
+		while(buffer[i] != '\n' && buffer[i] != '\0')
 		{
 			oc[j] = buffer[i];
-			j++;
-		}
-		else
-		{
-			oc[j + 1] = '\0';
 			if (buffer[i] == ' ')
 			{
-				i++;
+				oc[j] = '\0';
 			}
-			while (buffer[i] != '\n')
-			{
-				val[k] = buffer[i];
-				i++;
-				k++;
-			}
-			val[k + 1] = '\0';
-			line_number++;
-			opcode(oc, line_number);
-			j = 0;
-			k = 0;
+			i++;
+			j++;
 		}
-		i++;
+		oc[j] = '\0';
+		if (oc[0] == '\0')
+			break;
+		line_number++;
+		opcode(&stack, oc, line_number);
 	}
-	printf("Buffer : %s", buffer);
-	printf("Value : %s\n", val);
-	printf("Opcode : %s\n", oc);
+	fclose(fd);
+	free(buffer);
+	free(oc);
+	free(val);
 	return (0);
 }

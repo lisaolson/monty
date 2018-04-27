@@ -13,8 +13,8 @@ void add(stack_t **stack, unsigned int line_number)
 	stack_t *temp;
 
 	(void)line_number;
-	total = (*stack)->n + (*stack)->next->n;
-	(*stack)->next->n = total;
+	total = (*stack)->n + ((*stack)->next)->n;
+	((*stack)->next)->n = total;
 	temp = *stack;
 	*stack = (*stack)->next;
 	(*stack)->prev = NULL;

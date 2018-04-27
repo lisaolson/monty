@@ -8,10 +8,10 @@
 */
 void swap(stack_t **stack, unsigned int line_number)
 {
-	int a = 0;
+	int a;
 
 	(void)line_number;
 	a = (*stack)->n;
-	(*stack)->n = (*stack)->next->n;
-	(*stack)->next->n = a;
+	(*stack)->n = ((*stack)->next)->n;
+	((*stack)->next)->n = a;
 }
