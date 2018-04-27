@@ -14,12 +14,6 @@ void push(stack_t **stack, unsigned int line_number)
 	char *a;
 	stack_t *new;
 
-	(void)line_number;
-	if (*stack == NULL)
-	{
-		printf("L%u: can't pint, stack empty\n", line_number);
-		exit(EXIT_FAILURE);
-	}
 	while (buffer[i] != '\0' && buffer[i] != ' ')
 	{
 		i++;
@@ -38,7 +32,13 @@ void push(stack_t **stack, unsigned int line_number)
 		j++;
 	}
 	a[j] = '\0';
+	if (a[0] == '\0')
+	{
+		printf("L%u: usage: push integer\n", line_number);
+		exit(EXIT_FAILURE);
+	}
 	value = atoi(a);
+	
 
 	new = malloc(sizeof(stack_t));
 	if (new == NULL)

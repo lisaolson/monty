@@ -10,11 +10,16 @@
 void add(stack_t **stack, unsigned int line_number)
 {
 	int total;
+	int stack_count;
 	stack_t *temp;
 
-	if (*stack == NULL)
+	while (*stack != NULL)
 	{
-		printf("L%u: can't pint, stack empty\n", line_number);
+		stack_count++;
+	}
+	if (stack_count < 2)
+	{
+		printf("L%u: can't add, stack stack too short\n", line_number);
 		exit(EXIT_FAILURE);
 	}
 

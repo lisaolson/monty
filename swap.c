@@ -9,10 +9,14 @@
 void swap(stack_t **stack, unsigned int line_number)
 {
 	int a;
+	int stack_count = 0;
 
-	if (*stack == NULL)
+	while (*stack != NULL)
+		stack_count++;
+
+	if (stack_count < 2)
 	{
-		printf("L%u: can't pint, stack empty\n", line_number);
+		printf("L%u: can't swap, stack too short\n", line_number);
 		exit(EXIT_FAILURE);
 	}
 
