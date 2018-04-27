@@ -3,6 +3,13 @@
 
 char *buffer;
 
+/**
+ * main - entry point
+ * @argc: argument count
+ * @argv: arguments
+ * Return: 0
+*/
+
 int main(int argc, char *argv[])
 {
 	char *val;
