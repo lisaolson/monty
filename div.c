@@ -6,7 +6,7 @@
  * @line_number: number of lines
  * Return: void
 */
-void div(stack_t **stack, unsigned int line_number)
+void divide(stack_t **stack, unsigned int line_number)
 {
         int total;
         int stack_count;
@@ -27,7 +27,7 @@ void div(stack_t **stack, unsigned int line_number)
 
 	if ((*stack)->n == 0)
 	{
-		printf("L%u: division by zero\n");
+		printf("L%u: division by zero\n", line_number);
 		exit(EXIT_FAILURE);
 	}
         total = ((*stack)->next)->n / (*stack)->n;

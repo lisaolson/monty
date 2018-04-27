@@ -20,7 +20,7 @@ void opcode(stack_t **stack, char *oc, unsigned int line_number)
 		{"sub", sub},
 		{"mul", mul},
 		{"mod", mod},
-		{"div", div},
+		{"div", divide},
 		{NULL, NULL}
 	};
 
