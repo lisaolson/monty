@@ -9,19 +9,14 @@
 
 void push(stack_t **stack, unsigned int line_number)
 {
-
 	int i = 0, value = 0, j = 0;
 	char *a;
 	stack_t *new;
 
 	while (buffer[i] == ' ')
-	{
 		i++;
-	}
 	while (buffer[i] != '\0' && buffer[i] != ' ')
-	{
 		i++;
-	}
 	a = malloc(sizeof(char) * 12);
 	if (a == NULL)
 	{

@@ -59,9 +59,10 @@ int main(int argc, char *argv[])
 		}
 		oc[j] = '\0';
 		if (oc[0] == '\0')
+		{
 			break;
+		}
 		opcode(&stack, oc, line_number);
-		free(buffer);
 	}
 	fclose(fd);
 	free(buffer);
